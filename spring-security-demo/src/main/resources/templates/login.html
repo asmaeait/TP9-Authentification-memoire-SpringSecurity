@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | SecureDash</title>
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+</head>
+<body>
+<div class="login-wrapper">
+    <div class="login-card-modern animate">
+        <div class="login-header">
+            <div class="login-logo">
+                SD
+            </div>
+            <h1 class="login-title">SecureDash</h1>
+            <p class="login-subtitle">Connectez-vous à votre espace sécurisé</p>
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label>Nom d'utilisateur</label>
+                <input type="text"
+                       name="username"
+                       class="input-modern"
+                       placeholder="Entrez votre nom d'utilisateur"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Mot de passe</label>
+                <input type="password"
+                       name="password"
+                       class="input-modern"
+                       placeholder="Entrez votre mot de passe"
+                       required>
+            </div>
+
+            <button type="submit" class="btn-modern btn-primary" style="width: 100%; justify-content: center;">
+                Se connecter
+            </button>
+        </form>
+
+        <div class="test-credentials">
+            <p>Comptes de démonstration</p>
+            <div>
+                <span class="cred-badge" style="background: rgba(16,185,129,0.2); color: #10b981;">Utilisateur: user / 1111</span>
+                <span class="cred-badge" style="background: rgba(239,68,68,0.2); color: #ef4444;">Administrateur: Asma / 1234</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

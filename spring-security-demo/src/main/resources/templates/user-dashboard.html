@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Espace | SecureDash</title>
+    <link th:href="@{/css/custom.css}" rel="stylesheet">
+</head>
+<body>
+<div class="app-container">
+    <nav class="navbar-modern">
+        <div class="navbar-content">
+            <div class="logo">
+                <div class="logo-icon">SD</div>
+                <span class="logo-text">SecureDash</span>
+            </div>
+            <div class="user-info">
+                <div class="user-details">
+                    <div class="user-name" sec:authentication="name"></div>
+                    <div class="user-role">Utilisateur</div>
+                </div>
+                <div class="user-avatar">
+                    <span sec:authentication="name" style="text-transform: uppercase; font-size: 1rem;">U</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div style="margin-bottom: 2rem;">
+        <a href="/" class="btn-modern btn-outline" style="display: inline-flex;">Retour</a>
+    </div>
+
+    <div class="card-modern animate">
+        <div class="card-header">
+            <div class="card-icon">P</div>
+            <span class="card-badge badge-user">ACTIF</span>
+        </div>
+        <h1 class="card-title">Mon Profil</h1>
+
+        <div style="background: var(--bg-primary); border-radius: 1rem; padding: 1.5rem; margin: 1.5rem 0;">
+            <div style="display: grid; gap: 1rem;">
+                <div>
+                    <span style="color: var(--text-secondary);">Nom d'utilisateur</span>
+                    <div style="font-weight: 600; font-size: 1.2rem;" sec:authentication="name">-</div>
+                </div>
+                <div>
+                    <span style="color: var(--text-secondary);">Rôles</span>
+                    <div style="font-weight: 600;" sec:authentication="authorities">-</div>
+                </div>
+                <div>
+                    <span style="color: var(--text-secondary);">Dernière connexion</span>
+                    <div th:text="${#dates.format(#dates.createNow(), 'dd/MM/yyyy HH:mm')}">-</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr);">
+            <div class="stat-card">
+                <div class="stat-value">✓</div>
+                <div class="stat-label">Authentifié</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value"></div>
+                <div class="stat-label">Session sécurisée</div>
+            </div>
+        </div>
+
+        <form th:action="@{/logout}" method="post" style="margin-top: 1.5rem;">
+            <button type="submit" class="btn-modern btn-danger">Se déconnecter</button>
+        </form>
+    </div>
+
+    <footer class="footer-modern">
+        <p>© 2026 SecureDash - Developpé par Asma | Espace personnel sécurisé</p>
+    </footer>
+</div>
+</body>
+</html>
